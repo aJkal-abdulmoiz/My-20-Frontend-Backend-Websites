@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="dataform">
+        <input id="input-link" type="text" required placeholder="Enter Google Sheets Link">
+        <button type="submit">Connect</button>
+    </form>
+    <button id="get">GET</button>
+
+    
+    <script>
+        document.getElementById('get').addEventListener('click',handleclick)
+
+        async function handleclick (){
+            try {
+                const response = await fetch('/getData',{
+                    method:'GET'
+                    
+                })
+                const data = await response.text()
+
+                console.log(data)
+                
+            }
+             catch (error) {
+                console.log(error)
+            }
+        }
+        document.getElementById('dataform').addEventListener('submit', async (e)=>{
+            e.preventDefault()
+            
+            const sheetLink = document.getElementById('input-link').value;
+            document.getElementById('input-link').value=''
+
+
+            try{
+                const response = await fetch('/sheetLink',{
+                    method:'POST',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body:JSON.stringify({sheetLink})
+                    
+                    });
+                if(!response.ok){
+                    console.log("Failed to connect to server")
+                }
+
+                console.log("Data Sent Successfully!!!")
+
+                
+            }
+            catch(error){
+                console.log("Error Connecting to the server",error)
+
+            }
+        })
+        
+    </script>
+</body>
+</html>
