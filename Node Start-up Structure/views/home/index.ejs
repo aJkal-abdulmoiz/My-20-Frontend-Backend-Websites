@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    <a href="/dashboard">Go to Dashboard</a>
+    <br>
+
+<!-- views/home.ejs -->
+<!-- views/home.ejs -->
+<form id="dataForm">
+    <input type="text" id="usernameInput" name="username" placeholder="Enter your username">
+    <input type="text" id="rollNoInput" name="rollNo" placeholder="Enter your roll number">
+    <input type="text" id="idInput" name="id" placeholder="Enter your ID">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById('dataForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    var username = document.getElementById('usernameInput').value;
+    var rollNo = document.getElementById('rollNoInput').value;
+    var id = document.getElementById('idInput').value;
+    submitData({ username: username, rollNo: rollNo, id: id });
+});
+
+function submitData(data) {
+    fetch('/req', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data); // Log response from server
+        // Handle response as needed
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+</script>
+
+</script>
+
+    
+</body>
+</html>
