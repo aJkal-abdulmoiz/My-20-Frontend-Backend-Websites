@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #db2b17 0%, #2219a3 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Nunito", sans-serif;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, 0%);
+}
+
+.box {
+  min-width: 300px;
+  background: rgb(218, 207, 207);
+  border-radius: 38px;
+  text-align: center;
+  position: relative;
+}
+.box::before {
+  content: "";
+  position: absolute;
+  height: 110%;
+  width: 110%;
+  left: -5%;
+  top: -5%;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 166px -31px rgba(0, 0, 0, 0.15);
+  border-radius: 60px;
+  z-index: -1;
+}
+h1 {
+  font-weight: bold;
+  font-size: 36px;
+  padding: 30px 0;
+}
+.content {
+  padding: 0 40px;
+}
+.input {
+  background: #e1dcdc;
+  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+  border-radius: 30px;
+  padding: 5px 0;
+  margin-bottom: 20px;
+}
+.input label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 20px;
+}
+.input input {
+  outline: none;
+  border: none;
+  background-color: #e1dcdc;
+  width: 60%;
+  text-align: center;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  border-bottom:1px solid #e32d2d;
+}
+button#calculate {
+  font-family: "Nunito", sans-serif;
+  color: #fff;
+  background: #db3434;
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 100%;
+  outline: none;
+  border: none;
+  transition: background 0.2s ease;
+}
+button#calculate:hover {
+  background: #d60606;
+}
+.result {
+  padding: 30px 20px;
+}
+.result p {
+  font-weight: 600;
+  font-size: 22px;
+  color: #000;
+  margin-bottom: 15px;
+}
+.result #result {
+  font-size: 36px;
+  font-weight: 900;
+  color: #1b0404;
+  background-color: #eaeaea;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 55px;
+  margin-bottom: 25px;
+}
+#comment {
+  color: #db3434;
+  font-weight: 800;
+}
+.link {
+  background-color:rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+}
+
+.link a {
+  padding-left: 7px;
+  text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+          <h1>BMI Calculator</h1>
+          <div class="content">
+            <div class="input">
+              <label for="height">Height(cm)</label>
+              <input type="number" id="height">
+            </div>
+            <div class="input">
+              <label for="weight">Weight(kg)</label>
+              <input type="number" id="weight">
+            </div>
+            <button id="calculate">Calculate</button>
+          </div>
+          <div class="result">
+            <p>Your BMI is</p>
+            <div id="result">00.00</div>
+            <p class="comment"></p>
+          </div>
+        </div>
+ 
+      </div>
+
+
+
+<script>
+
+    const btn = document.getElementById("calculate");
+
+    btn.addEventListener("click", async function () {
+    let height = document.querySelector("#height").value;
+    let weight = document.querySelector("#weight").value;
+
+    if (height == "" || weight == "") {
+        alert("Please fill out the input fields!");
+        return;
+    }
+
+    try {
+        const response = await fetch('/bmi',{
+            method: "POST",
+            headers:{
+                'content-Type': "application/json"
+            },
+            body: JSON.stringify({ 
+                height: height,
+                weight: weight
+            })
+        })
+
+        if(!response){
+            console.log("Failed to Calculate BMI bad response from server")
+        }
+
+        const ResData = await response.json();
+
+        BMI = ResData.bmiNum
+        document.getElementById('result').innerHTML = BMI;
+        
+    } catch (error) {
+        console.log("Error connecting to the server", error);
+    }
+
+    let status = "";
+
+    if (BMI < 18.5) {
+        status = "Underweight";
+    }
+    if (BMI >= 18.5 && BMI < 25) {
+        status = "Healthy";
+    }
+    if (BMI >= 25 && BMI < 30) {
+        status = "Overweight";
+    }
+    if (BMI >= 30) {
+        status = "Obese";
+    }
+    document.querySelector(
+        ".comment"
+    ).innerHTML = ` You are <span id="comment">${status}</span>`;
+    });
+
+</script>
+
+</body>
+</html>
