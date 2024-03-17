@@ -1,0 +1,273 @@
+body {
+    font-family: 'Oxygen';
+}
+
+h1 {
+    font-family: 'Anton-Black';
+    font-size: 4rem;
+    line-height: 1.5;
+}
+
+h2 {
+    font-family: 'Anton-Bold';
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+h3 {
+    font-family: 'Anton-Bold';
+    font-size: 1.5rem;
+
+}
+
+h4 {
+    font-family: 'Oxygen';
+    font-size: 2.5rem;
+    color: crimson;
+
+}
+
+h5{
+    font-family: 'Anton-Bold';
+    font-size: 5.5rem;
+
+}
+
+h6{
+    font-family:cursive;
+    color:#8f8f8f;
+    font-size: 1rem;
+
+}
+
+p {
+    font-family: 'Oxygen';
+    color: #8f8f8f;
+
+}
+
+
+#title {
+    background-color:navy;
+    color:ghostwhite;
+}
+
+.container-fluid {
+    padding: 3% 14% 45%;
+    padding-left: 8%;
+    
+    
+}
+
+
+
+/*Navigation  Bar*/
+
+.navbar{
+    padding-left: 0.10rem ;
+    background-color:darkslategray;
+   
+    
+
+}
+
+.navbar-brand {
+    font-family: 'Oxygen';
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3%;
+    padding-right: 20%;
+    
+    
+}
+
+.nav-item {
+    
+    padding: 0 15px;
+    font-size: 1.4rem;
+    
+    
+    
+
+}
+
+.nav.link {
+    font-size: 1.2rem;
+    font-family: 'Anton-Light';
+    padding: 0 0 3px 0;
+
+}
+
+/* Download Button */
+
+.download-button {
+    margin: 5% 3% 5% 0;
+
+}
+
+/* Title Image */
+
+.title-image {
+    margin-top: 6%;
+    width: 115%;
+    left: 10%;
+    border-radius: 2%;
+    position: absolute;
+}
+#features {
+    padding: 7% 15%;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+
+
+}
+
+.feature-box {
+    text-align: center;
+    padding: 2%;
+}
+
+
+
+/* Testimonials */
+
+#testimonials {
+   padding: 0% 8%;
+    text-align: center;
+    background-color:darkcyan;
+    color:black;
+}
+
+.testimonial-image {
+    width: 40%;
+    margin: 18px;
+}
+ 
+.carousel-item {
+    padding: 5% 15%;
+
+}
+
+#press {
+    background-color:darkslategray;
+    text-align: center;
+    font-family: 'Oxygen';
+    -webkit-text-fill-color:ghostwhite;
+    padding: 102px;
+    padding-bottom: 16%;
+    line-height: 32px;
+    font-size: 1.3rem;
+
+}
+
+
+.press-logo {
+    width: 15%;
+    margin: 20px 20px 50px;
+
+}
+
+/* Pricing Section */ 
+
+#pricing {
+
+    background-color:darkgrey;
+    padding: 102px;
+    text-align: center;
+
+}
+.pricing-column{
+    padding: 1% 1%;
+    margin-top: 2%;
+
+}
+/* Cta Section */
+
+#cta {
+    background-color:firebrick;
+    color:snow;
+    padding: 5% 8%;
+    text-align: center;
+
+}
+
+.cta-heading {
+    font-family: 'Oxygen';
+    font-size: 2.5rem;
+    padding-top: 2%;
+    line-height: 0.5px;
+
+}
+
+/* Footer Section */
+
+#footer {
+    padding-top: 1%;
+    padding: 2% 25%;
+    padding-left: 22%;
+    margin-left: 0%;
+    text-align: center;
+
+}
+
+.social-icon {
+    margin: 30px 20px;
+
+}
+
+@media (max-width:1028px) {
+    #title{
+        text-align: center;
+
+    }
+    .title-image{
+        position: static;
+        transform: rotate(0);
+    }
+    
+}
+
+.linkedin{
+    width: 5%;
+    height: 5%;
+    margin-left: 1%;
+
+}  
+.insta{
+    width: 5%;
+    height: 5%;
+    margin-left: 1%;
+}
+
+.git{
+    width: 5%;
+    height: 5%;
+    margin-left: 1%;
+}
+
+.you{
+    width: 5%;
+    height: 5%;
+    margin-left: 1%;
+
+}
+.About{
+    font-size: 1.2rem;
+    font-family: 'Oxygen-Light';
+    color: ghostwhite;
+    
+}
+
+.title-1{
+    padding: 3% 15% 45%;
+}
+
+#part-1{
+
+    background-color:darkslategrey;
+    color:ghostwhite;
+}
+
+
+
