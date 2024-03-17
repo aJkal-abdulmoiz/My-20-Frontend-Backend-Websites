@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Random Password Generator
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Get a<br><span>Random Password</span></h1>
+    <div class="display">
+        <input type="text" id="password" size="30" placeholder="Generated Password Will Show Here">
+        <img src="copy.png" onclick="copy()">
+    </div>
+
+    <!-- <div class="check-Boxes">
+        <input type="checkbox" id="special-check-box">
+        <label for="special-check-box"> Include Symbols like ( @#$% )</label><br>
+        <input type="checkbox" id="Lower-check-box">
+        <label for="Lower-check-box"> Include Lowercase ( abcd )</label><br>
+        <input type="checkbox" id="Upper-check-box">
+        <label for="Upper-check-box"> Include UpperCase ( ABCD )</label><br>
+        <input type="checkbox" id="Num-check-box">
+        <label for="Num-check-box"> Include Numbers ( 1234 )</label><br><br>
+    </div> -->
+
+    <button onclick="createPassword()"><img src="gen.png" alt="">Generate</button>
+
+
+    <div id="extra">
+        <div class="Remember ">
+            <label>Remember your password By:</label>
+        </div>
+        <div class="words ">
+            <p id="sentence">Remember your password with this sentence.</p>
+        </div>
+    </div>
+    
+
+    </div>
+
+    
+
+<script src="index.js"></script>
+
+</body>
+
+</html>
