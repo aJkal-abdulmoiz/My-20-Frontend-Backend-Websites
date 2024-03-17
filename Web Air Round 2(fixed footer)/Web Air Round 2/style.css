@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@100;200;400;500;600;700&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@100;200;400;500;600;700&family=Raleway:wght@400;700&display=swap');
+* { margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    font-family: 'Raleway', sans-serif;
+}
+
+p{
+    font-size: 16px;
+}
+
+.navbar{
+    position: sticky;
+    width: 100%;
+    background-color: #ffff;
+    color: #000;
+
+
+}
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.menu-items{
+    display: flex;
+}
+
+.menu-items li{
+    list-style: none;
+    margin-left: 1.5rem;
+    font-size: 1rem;
+}
+
+.navbar a{
+    color: #444;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.navbar img{
+    width: 66%;
+}
+
+main input{
+    padding: 10px;
+    width: 400px;
+    border-radius: 2.5px;
+    font-size: 12px;
+}
+
+main button{
+    background-color: hsl(224, 93%, 58%);
+    color: #ffffff;
+    width: 175px;
+    border-radius: 2.5px;
+    border: none;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.about{
+    padding: 60px 0px 0px;
+}
+
+.about-wrapper{
+    display: flex;
+    flex-wrap:wrap ;
+}
+
+.about-img{
+    flex: 1 1 400px;
+    padding: 30px;
+
+}
+
+.about-img img{
+    display: block;
+    height: 400px;
+    max-width: 100%;
+    margin: auto;
+    object-fit: cover;
+    object-position: right;
+}
+
+.about-text{
+    flex: 1 1 400px;
+    padding: 30px;
+    margin: auto;
+}
+
+#linked{
+    color: hsl(170, 45%, 43%);
+    text-decoration: underline;
+}
+
+#review
+{
+    margin: 30px 0px;
+    padding:  15px 30px;
+    background-color: white;
+    border-radius: 15px;
+    width: 60%;
+}
+
+.container{
+    margin: 0px 50px 0px;
+}
+
+#newsletter{
+    padding: 30px;
+    background-color: hsl(238, 22%, 44%);
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
+    padding: 50px 0px 75px;
+}
+
+#newsletter h4{
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+}
+
+#newsletter p{
+    color: white;
+    font-size: 14px;
+}
+
+#newsletter input{
+    padding: 10px;
+    width: 400px;
+    border-radius: 2.5px;
+    border: none;
+    font-size: 12px;
+}
+
+#newsletter button{
+    background-color: hsl(224, 93%, 58%);
+    color: #ffffff;
+    width: 175px;
+    border-radius: 2.5px;
+    border: none;
+    padding: 7.5px;
+    margin: 10px 0px;
+}
+
+.heading-1{
+    margin-bottom: 10px;
+}
+
+footer{
+    background-color: hsl(243, 87%, 12%);
+    padding: 80px 50px;
+    color: white;
+}
+
+.footer-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+footer img{
+    margin: 0px 10px 0px;
+} 
+
+#logo{
+    margin: 30px 0px;
+}
+
+footer h4{
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+.favicons{
+    width: 32px;
+    height: 32px;
+    color: white;
+    border-radius: 55%;
+}
+
+#fb{
+    background-color: rgb(10, 10, 206);
+}
+#insta{
+    background-color: rgb(177, 54, 113);
+}
+#twitter{
+    background-color: rgb(0, 136, 255);
+}
+
+footer p{
+    font-size: 13px;
+    margin-bottom: 0 0 8px 0;
+}
+
+footer a{
+    font-size: 13px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 850px) {
+    button{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 569px) {
+
+}
+
+@media screen and (max-width: 410px) {
+
+}
