@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUCIS ELECTIONS VOTING</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="610501586703-g3db9sghqaquief57u43v70s253a0ic0.apps.googleusercontent.com">
+    <!-- To integrate Google Sign-in -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+
+
+</head>
+<body>
+    <div class="alert-box" id="myAlert" style="display: none;"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">AU</a>
+            <div class="main-title">
+                <h3>AUCIS ELECTIONS 2023</h3>
+            </div>
+            <ul class="nav-links">
+                <li class="signin-btn">
+                    <div class="user-profile" style="display: none;">
+                        <img class="profile-pic" alt="Profile Picture">
+                        <span class="user-name"></span>
+                    </div>
+                    <div class="g-signin2" data-shape="circle" data-onsuccess="onSignIn" ></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+
+
+    <div class="category-p">
+        <h1>President Nominies</h1>
+    </div>
+    <div class="box-wrapper">
+        <div class=" box box-1 Husnain">
+            <h2>PRESIDENT</h2>
+            <div class="image">
+                <img src="husnain.png" alt="">
+            </div>
+            <p>ALi Husnain Taqvi</p>
+            <button class="vote-btn"  type="submit" onclick="p1.addHusnainVotes()">VOTE</button>
+        </div>
+        <div class="box box-2 M_Ali">
+            <h2>PRESIDENT</h2>
+            <div class="image">
+                <img src="m ali.png" alt="">
+            </div>
+            <p>Muhammad ALI</p>
+            <button  class="vote-btn"  type="submit"  onclick="p2.addM_AliVotes()">VOTE</button>
+        </div>
+        <div class="box box-3 Haroon">
+            <h2>PRESIDENT</h2>
+            <div class="image">
+                <img src="Haroon.png" alt="">
+            </div>
+            <p>Muhammad Haroon</p>
+            <button  class="vote-btn"  type="submit"  onclick="p3.addHaroonVotes()">VOTE</button>
+        </div>
+        <div class="box box-4 baji">
+            <h2>PRESIDENT</h2>
+            <div class="image">
+                <img src="unknown.jpg" alt="">
+            </div>
+            <p>Maryam</p>
+            <button class="vote-btn"  type="submit"  onclick="p10.addBajiVotes()">VOTE</button>
+        </div>
+    </div>
+
+
+
+    <div class="category-vp">
+        <h1>Vice President Nominies</h1>
+    </div>
+    <div class="box-wrapper2">
+        <div class=" box box-1 Awais">
+            <h2>VICE PRESIDENT</h2>
+            <div class="image">
+                <img src="m-awais.png" alt="">
+            </div>
+            <p>M. Awais</p>
+            <button class="vote-btn"  type="submit"  onclick="p4.addAwaisVotes()">VOTE</button>
+        </div>
+        <div class="box box-2 Abubakar">
+            <h2>VICE PRESIDENT</h2>
+            <div class="image">
+                <img src="abubakar.png" alt="">
+            </div>
+            <p>Abubakar</p>
+            <button class="vote-btn"  class="vote-btn"  type="submit"  onclick="p5.addAbubakarVotes()">VOTE</button>
+        </div>
+
+        </div>
+
+
+
+
+
+    </div>
+    <div class="category-sec">
+        <h1>General Secretary Nominies</h1>
+    </div>
+    <div class="box-wrapper3 Hashaam">
+        <div class=" box box-1 Hashaam">
+            <h2>GENERAL SECRETARY</h2>
+            <div class="image">
+                <img src="hasham.png" alt="">
+            </div>
+            <p>Hashaam</p>
+            <button class="vote-btn"  class="vote-btn" type="submit"  onclick="p6.AddHashaamVotes()">VOTE</button>
+        </div>
+        <div class="box box-2 Ahad">
+            <h2>GENERAL SECRETARY</h2>
+            <div class="image">
+                <img src="Ahad.png" alt="">
+            </div>
+            <p>Abdul Ahad</p>
+            <button class="vote-btn"  type="submit"  onclick="p7.addAhadVotes()">VOTE</button>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <a class="unselectable" >Developed by Abdul Moiz</a>
+        <a class="unselectable" >Contact For Pic Removal or Business Inquiry </a>
+        <a class="contact" target="_blank" href="https://www.linkedin.com/in/abdul-moiz-303228264/">Contact Me</a>
+    </footer>
+
+
+
+   
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
