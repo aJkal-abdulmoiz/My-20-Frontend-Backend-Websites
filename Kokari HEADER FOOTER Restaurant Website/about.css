@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+p{
+    font-size: 15px
+}
+html {
+  scroll-behavior: smooth;
+}
+
+#wrapper{
+    width: 100%;
+    max-width: none;
+    /* background-color: wheat; */
+    background-image: url(images/wrapper-texture.jpg);
+}
+
+.header-wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
+.header-row{
+    margin: 0 10px;
+}
+
+.logo{
+    margin: 35px 0;
+}
+
+.logo a img{
+    width: 350px;
+    height: 102px;
+    align-items: center;
+}
+
+.mobile-logo{
+    display: none;
+}
+
+
+.nav-main-menu{
+    padding: 0 20px;
+}
+
+.nav-row{
+    padding: 0 10px;
+}
+.nav-flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#menu-list-flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 10px 20px;
+}
+
+.menu-li {
+    display: flex;
+    margin: 0 18px; /* Adjust margin as needed */
+    list-style: none;
+}
+
+.menu-href-links {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-href-links span{
+    font-size: 19px;
+}
+
+
+#footer{
+    margin: 0 30px;
+}
+
+.footer-row{
+    padding: 0 10px;
+}
+
+.footer-menu-wrapper{
+    padding: 5px 30px;
+}
+
+
+.footer-menu-row{
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.footer-menu-cell{
+    margin: 35px;
+
+}
+
+.footer-menu-cell a{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.footer-brands{
+    padding: 35px 20px;
+}
+.footer-brands a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-address{
+    padding: 20px 10px;
+    text-transform:uppercase;
+    line-height: 25px;
+}
+.footer-address .address{
+    text-align: center;
+}
+
+.address a{
+    text-decoration: none;
+    color:rgb(186, 143, 91);
+}
+
+.sec-last{
+    padding: 8px 5px;
+}
+
+.sec-last a{
+    text-decoration: none;
+    color:rgb(186, 143, 91);
+}
+
+
+
+/* copyrights-footer */
+
+
+.copy-rights{
+   
+}
+.copyright-row{
+    padding: 10px 5px;
+    background-color: #282a2b;
+}
+
+.js-copyright-date{
+
+}
+
+.js-copyright-date a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.Date{
+    color: whitesmoke;
+}
