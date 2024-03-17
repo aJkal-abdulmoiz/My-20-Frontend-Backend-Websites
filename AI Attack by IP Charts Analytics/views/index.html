@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack Tracker - Input</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            box-sizing: border-box;
+        }
+
+        .container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+  <div>
+    <h1 style="margin-top:-70px;">Welcome To AI Analytics Website</h1>
+  </div>
+
+    <div class="container" style="margin-top:100px;">
+        <h1>Enter Details of Attack</h1>
+        <div>
+            <label for="ip">IP Address:</label>
+            <input type="text" id="ip">
+        </div>
+        <div>
+            <label for="attack">Attack Name:</label>
+            <input type="text" id="attack">
+        </div>
+        <div>
+            <label for="packetSize">Packet Size:</label>
+            <input type="number" id="packetSize">
+        </div>
+        <button onclick="saveAttack()">Save</button>
+    </div>
+
+    <script>
+        function saveAttack() {
+            const ip = document.getElementById('ip').value;
+            const attack = document.getElementById('attack').value;
+            const packetSize = document.getElementById('packetSize').value;
+
+            if(ip.trim() === '' || attack.trim() === '' || packetSize.trim() === '') {
+                alert('Please enter IP, Attack Name, and Packet Size');
+                return;
+            }
+            clearinputs();
+       
+            
+
+            fetch('/dashboard/input', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ip, attack, packetSize })
+            })
+            .then(response => {
+                if(response.ok) {
+                    alert('Attack details saved successfully!');
+                    window.location.href = '/dashboard'
+                } else {
+                    alert('Failed to save attack details. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while saving attack details. Please try again.');
+            });
+        }
+
+        const clearinputs = () =>{
+            document.getElementById('ip').value = '';
+            document.getElementById('attack').value = '';
+            document.getElementById('packetSize').value = '';
+        }
+    </script>
+</body>
+</html>

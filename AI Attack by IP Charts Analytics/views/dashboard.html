@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack Tracker - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="visualizeAttacks()">
+    <h1 >Admin Analytics Dashboard</h1>   <button style="   padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: #203041;
+    color: white;
+    cursor: pointer;" onclick="navigate()">Add new Data</button>
+    <div style="text-align: center; ">
+    </div>
+
+    <div style="display: flex; justify-content: space-around; margin-top: 2px">
+        <div>
+            <canvas style="margin-top: 30px;" id="attackBarChart" width="400" height="400"></canvas>
+        </div>
+        <div>
+            <canvas id="attackPieChart" width="400" height="400"></canvas>
+        </div>
+        <div>
+            <canvas id="vulnerabilityChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 50px; ">
+        <progress style="width: 35%; height: 40px;" id="progressBar" max="50" value="0"></progress>
+        <p><span id="progressLabel">0</span>%</p>
+    </div>
+
+    <script>
+
+        function navigate(){
+            window.location.href = '/'
+        }
+        function visualizeAttacks() {
+            fetch('/dashboard/visualize')
+                .then(response => response.json())
+                .then(data => {
+                    updateBarChart(data);
+                    updatePieChart(data);
+                    updateVulnerabilityChart(data);
+                    updateProgressBar(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function updateBarChart(data) {
+    const attackCounts = countAttacks(data);
+    const attackLabels = Object.keys(attackCounts);
+    const attackValues = Object.values(attackCounts);
+
+    const ctx = document.getElementById('attackBarChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: attackLabels.map(label => `${label}(${getPacketSize(label, data)})`),
+            datasets: [{
+                label: 'Number of Attacks by IP and PacketSize',
+                data: attackValues,
+                backgroundColor: [
+                    'rgba(0, 51, 102, 0.8)',
+                    'rgba(0, 51, 102, 0.7)',
+                    'rgba(0, 51, 102, 0.6)',
+                    'rgba(0, 51, 102, 0.5)'
+                ],
+                borderColor: 'rgba(0, 51, 102, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+function countAttacks(data) {
+    const attackCounts = {};
+
+    data.forEach(attack => {
+        const key = `${attack.attack} - ${attack.ip}`;
+        if (attackCounts[key]) {
+            attackCounts[key]++;
+        } else {
+            attackCounts[key] = 1;
+        }
+    });
+
+    return attackCounts;
+}
+
+function getPacketSize(label, data) {
+    const [attack, ip] = label.split(' - ');
+    const attackData = data.find(item => item.attack === attack && item.ip === ip);
+    return attackData ? attackData.packetSize : 'N/A';
+}
+
+        function updatePieChart(data) {
+            const attackCounts = countAttacks(data);
+            const attackLabels = Object.keys(attackCounts);
+            const attackValues = Object.values(attackCounts);
+
+            const ctx = document.getElementById('attackPieChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: attackLabels,
+                    datasets: [{
+                        label: 'Number of Attacks by IP',
+                        data: attackValues,
+                        backgroundColor: [
+                            'rgba(204, 0, 0, 0.9)', // Dark red color
+                            'rgba(0, 51, 102, 0.9)', // Dark blue color
+                            'rgba(255, 153, 0, 0.8)', // Orange color
+                            'rgba(0, 102, 0, 0.5)', // Dark green color
+                            'rgba(102, 0, 102, 0.7)', // Purple color
+                            'rgba(255, 204, 0, 0.8)' // Yellow color
+                        ],
+                        borderColor: [
+                            'rgba(204, 0, 0, 1)', // Dark red color
+                            'rgba(0, 51, 102, 1)', // Dark blue color
+                            'rgba(255, 153, 0, 1)', // Orange color
+                            'rgba(0, 102, 0, 1)', // Dark green color
+                            'rgba(102, 0, 102, 1)', // Purple color
+                            'rgba(255, 204, 0, 1)' // Yellow color
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+
+        function updateVulnerabilityChart(data) {
+            const vulnerabilityLevel = calculateVulnerabilityLevel(data); 
+            const ctx = document.getElementById('vulnerabilityChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Vulnerability Level'],
+                    datasets: [{
+                        label: 'Vulnerability Level',
+                        data: [vulnerabilityLevel],
+                        backgroundColor: 'rgba(255, 204, 0, 1)', // Dark red color
+                        borderColor: 'rgba(204, 0, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        function countAttacks(data) {
+            const attackCounts = {};
+
+            data.forEach(attack => {
+                const key = `${attack.attack} - ${attack.ip}`;
+                if (attackCounts[key]) {
+                    attackCounts[key]++;
+                } else {
+                    attackCounts[key] = 1;
+                }
+            });
+
+            return attackCounts;
+        }
+
+        function calculateVulnerabilityLevel(data) {
+           //later ai model funtion will be implemented here
+            return Math.floor(Math.random() * 101); 
+        }
+
+        function updateProgressBar(data) {
+    const totalAttacks = data.length;
+    const progressBar = document.getElementById('progressBar');
+    const progressLabel = document.getElementById('progressLabel');
+
+    if (!Number.isFinite(totalAttacks)) {
+        console.error('Total attacks count is not a valid number.');
+        return;
+    }
+    progressBar.value = totalAttacks;
+    progressLabel.textContent = totalAttacks;
+}
+
+    </script>
+</body>
+</html>
