@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./bin/www",
-    "start": "node ./bin/www"
+    "dev": "node api.js && nodemon ./bin/www",
+    "start": "node api.js && node ./bin/www"
   },
   "dependencies": {
     "@looker/sdk-node": "^21.0.9",
